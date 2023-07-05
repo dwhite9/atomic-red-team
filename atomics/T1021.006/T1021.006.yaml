@@ -14,20 +14,19 @@ atomic_tests:
       Enable-PSRemoting -Force
     name: powershell
     elevation_required: true
-- name: Remote Code Execution with PS Credentials Using Invoke-Command
-  auto_generated_guid: 5295bd61-bd7e-4744-9d52-85962a4cf2d6
-  description: |
-    Simulate lateral movement with PowerShell Remoting on the local host. 
-    Upon successful execution, PowerShell will execute `whoami` using `Invoke-Command`, targeting the 
-    local machine as remote target.
+- name: test name
+  auto_generated_guid: 
+  description: test description
   supported_platforms:
   - windows
   executor:
     command: |-
-      Enable-PSRemoting -Force
+      Enable-PSRemoting -Force 
       Invoke-Command -ComputerName $env:COMPUTERNAME -ScriptBlock {whoami}
-    cleanup_command: Disable-PSRemoting -Force
+    cleanup_command: echo 'cleanup command'
     name: powershell
+    elevation_required: false
+  
 
 - name: WinRM Access with Evil-WinRM
   auto_generated_guid: efe86d95-44c4-4509-ae42-7bfd9d1f5b3d
